@@ -29,6 +29,7 @@ def _bytes_feature(value):
     Returns:
         The FeatureEntry
     """
+    value= tf.compat.as_bytes(value, encoding='utf-8') 
     return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
 
 def convert_to_tfrecord(dataset_name, data_directory, class_map, segments=1, directories_as_labels=True, files='**/*.jpg'):
